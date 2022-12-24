@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         tabBarTheme: TabBarTheme(
+
             labelColor: Colors.white, unselectedLabelColor: Colors.white),
       ),
       color: Colors.white,
