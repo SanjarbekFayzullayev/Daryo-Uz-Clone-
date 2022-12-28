@@ -28,6 +28,7 @@ class _MainMenyuState extends State<MainMenyu> {
               icon: const Icon(Icons.search),
             ),
           ],
+
           bottom:
           PreferredSize(
             preferredSize: const Size.fromHeight(48.05),
