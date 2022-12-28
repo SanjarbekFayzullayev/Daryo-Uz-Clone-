@@ -17,9 +17,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        tabBarTheme: TabBarTheme(
+        tabBarTheme: const TabBarTheme(
 
             labelColor: Colors.white, unselectedLabelColor: Colors.white),
       ),

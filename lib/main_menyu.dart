@@ -29,25 +29,35 @@ class _MainMenyuState extends State<MainMenyu> {
             ),
           ],
           bottom:
-              const TabBar(overlayColor: MaterialStatePropertyAll(Colors.white),
-                  // unselectedLabelColor: Colors.white,
-                  // labelColor: Colors.blue,
-                  // indicatorColor: Colors.blue,
-                  tabs: [
-                Tab(
-                  text: "So'nggi Yangliklar",
-                ),
-                Tab(
-                  text: "Asosiy Yangliklar",
-                ),
-                Tab(
-                  text: "Eng ko'p ko'rilganlar",
-                ),
-              ]),
+          PreferredSize(
+            preferredSize: const Size.fromHeight(48.05),
+                 child: Container(
+                   color: Colors.white,
+                   child: const TabBar(
+
+                       overlayColor: MaterialStatePropertyAll(Colors.blue),
+                     unselectedLabelColor: Colors.blue,
+                     labelColor: Colors.blue,
+
+                     indicatorColor: Colors.blue,
+
+                     tabs: [
+                       Tab(
+                         text: "So'nggi Yangliklar",
+                       ),
+                       Tab(
+                         text: "Asosiy Yangliklar",
+                       ),
+                       Tab(
+                         text: "Eng ko'p ko'rilganlar",
+                       ),
+                     ]),),
+               ),
         ),
         body: TabBarView(children: [
-          ListView(
-            children: [
+          ListView.builder(itemBuilder: (context, index) {
+           return Column(children:
+            [
               MyAppMain(
                 context,
                 listModul[0],
@@ -92,8 +102,9 @@ class _MainMenyuState extends State<MainMenyu> {
                 context,
                 listModul[10],
               ),
-            ],
-          ),
+            ]);
+
+          }),
           endNews(context),
           theMostViewNews(context),
         ]),
@@ -109,12 +120,13 @@ Widget MyDrawer() {
       children: [
         DrawerHeader(
           decoration: const BoxDecoration(color: Colors.blue),
+          duration: Duration.zero,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     "Daryo",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -127,21 +139,21 @@ Widget MyDrawer() {
                 height: 40,
               ),
               Row(
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     "Toshkent",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const SizedBox(width: 140),
-                  const Icon(
+                  SizedBox(width: 140),
+                  Icon(
                     Icons.cloud_outlined,
                     color: Colors.white,
                   ),
-                  const Text(
+                  Text(
                     "+12.0",
                     style: TextStyle(color: Colors.white),
                   ),
-                  const Text(
+                  Text(
                     "0",
                     style: TextStyle(
                         fontSize: 7,
@@ -153,26 +165,25 @@ Widget MyDrawer() {
               const SizedBox(
                 height: 8,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                const Icon(Icons.monetization_on_outlined, color: Colors.white),
-                const Text(
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
+                Icon(Icons.monetization_on_outlined, color: Colors.white),
+                Text(
                   "10769.78",
                   style: TextStyle(color: Colors.white),
                 ),
-                const Icon(Icons.euro, color: Colors.white),
-                const Text(
+                Icon(Icons.euro, color: Colors.white),
+                Text(
                   "12166.62",
                   style: TextStyle(color: Colors.white),
                 ),
-                const Icon(Icons.offline_bolt_outlined, color: Colors.white),
-                const Text(
+                Icon(Icons.offline_bolt_outlined, color: Colors.white),
+                Text(
                   "146.17",
                   style: TextStyle(color: Colors.white),
                 ),
               ]),
             ],
           ),
-          duration: Duration.zero,
         ),
         ListTile(
           tileColor: Colors.blue,
@@ -285,59 +296,61 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
     child: Card(
       margin: const EdgeInsets.all(1.0),
       elevation: 72,
-      child: Column(
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                moduls.widgetTuype,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.blue),
-              ),
-              const SizedBox(
-                width: 110,
-              ),
-              Text(
-                moduls.cloc + " | 10 dekabr 2022 | ",
-                style: const TextStyle(color: Colors.grey),
-              ),
-              const Icon(Icons.visibility, color: Colors.blue),
-              Text(moduls.viewNumbers)
-            ],
-          ),
-          Row(
-
-            children: [
-              Container(
-                color: Colors.yellow,
-                height: 120,
-                width: 110,
-                child: Image.asset(moduls.imgUrl,fit: BoxFit.cover,),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Container(
-                width: 270,
-                height: 130,
-                child: Text(
-                  moduls.anonsTitle,
-                  style: const TextStyle(color: Colors.black, fontSize: 16),
+      child: Expanded(
+        child: Column(
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  moduls.widgetTuype,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue),
                 ),
-              ),
-            ],
-          ),
-        ],
+                const SizedBox(
+                  width: 110,
+                ),
+                Text(
+                  moduls.cloc + " | 10 dekabr 2022 | ",
+                  style: const TextStyle(color: Colors.grey),
+                ),
+                const Icon(Icons.visibility, color: Colors.blue),
+                Text(moduls.viewNumbers)
+              ],
+            ),
+            Row(
+
+              children: [
+                Container(
+                  color: Colors.yellow,
+                  height: 120,
+                  width: 110,
+                  child: Image.asset(moduls.imgUrl,fit: BoxFit.cover,),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  width: 270,
+                  height: 130,
+                  child: Text(
+                    moduls.anonsTitle,
+                    style: const TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     ),
   );
 }
 
 Widget endNews(BuildContext context) {
-  return ListView(
-    children: [
+  return ListView.builder(itemBuilder: (context, index) {
+    return Column( children: [
       MyAppMain(
         context,
         listModul[10],
@@ -382,13 +395,15 @@ Widget endNews(BuildContext context) {
         context,
         listModul[1],
       ),
-    ],
+    ],);
+  },
+
   );
 }
 
 Widget theMostViewNews(BuildContext context) {
-  return ListView(
-    children: [
+  return ListView.builder(itemBuilder: (context, index) {
+    return Column(children: [
       MyAppMain(
         context,
         listModul[0],
@@ -433,6 +448,8 @@ Widget theMostViewNews(BuildContext context) {
         context,
         listModul[10],
       ),
-    ],
+    ],);
+  },
+
   );
 }
