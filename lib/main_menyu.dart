@@ -28,37 +28,32 @@ class _MainMenyuState extends State<MainMenyu> {
               icon: const Icon(Icons.search),
             ),
           ],
-
-          bottom:
-          PreferredSize(
+          bottom: PreferredSize(
             preferredSize: const Size.fromHeight(48.05),
-                 child: Container(
-                   color: Colors.white,
-                   child: const TabBar(
-
-                       overlayColor: MaterialStatePropertyAll(Colors.blue),
-                     unselectedLabelColor: Colors.blue,
-                     labelColor: Colors.blue,
-
-                     indicatorColor: Colors.blue,
-
-                     tabs: [
-                       Tab(
-                         text: "So'nggi Yangliklar",
-                       ),
-                       Tab(
-                         text: "Asosiy Yangliklar",
-                       ),
-                       Tab(
-                         text: "Eng ko'p ko'rilganlar",
-                       ),
-                     ]),),
-               ),
+            child: Container(
+              color: Colors.white,
+              child: const TabBar(
+                  overlayColor: MaterialStatePropertyAll(Colors.blue),
+                  unselectedLabelColor: Colors.blue,
+                  labelColor: Colors.blue,
+                  indicatorColor: Colors.blue,
+                  tabs: [
+                    Tab(
+                      text: "So'nggi Yangliklar",
+                    ),
+                    Tab(
+                      text: "Asosiy Yangliklar",
+                    ),
+                    Tab(
+                      text: "Eng ko'p ko'rilganlar",
+                    ),
+                  ]),
+            ),
+          ),
         ),
         body: TabBarView(children: [
           ListView.builder(itemBuilder: (context, index) {
-           return Column(children:
-            [
+            return Column(children: [
               MyAppMain(
                 context,
                 listModul[0],
@@ -104,7 +99,6 @@ class _MainMenyuState extends State<MainMenyu> {
                 listModul[10],
               ),
             ]);
-
           }),
           endNews(context),
           theMostViewNews(context),
@@ -126,18 +120,46 @@ Widget MyDrawer() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     "Daryo",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 34,
                         color: Colors.white),
                   ),
+                  const SizedBox(width: 12),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.horizontal(
+                            left: Radius.circular(8),
+                          ),
+                        )),
+                    onPressed: () {},
+                    child: const Text(
+                      "Lotin",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.horizontal(
+                        right: Radius.circular(8),
+                      ),
+                    )),
+                    onPressed: () {},
+                    child: const Text(
+                      "Kril",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               Row(
                 children: const [
@@ -166,23 +188,25 @@ Widget MyDrawer() {
               const SizedBox(
                 height: 8,
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
-                Icon(Icons.monetization_on_outlined, color: Colors.white),
-                Text(
-                  "10769.78",
-                  style: TextStyle(color: Colors.white),
-                ),
-                Icon(Icons.euro, color: Colors.white),
-                Text(
-                  "12166.62",
-                  style: TextStyle(color: Colors.white),
-                ),
-                Icon(Icons.offline_bolt_outlined, color: Colors.white),
-                Text(
-                  "146.17",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ]),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Icon(Icons.monetization_on_outlined, color: Colors.white),
+                    Text(
+                      "10769.78",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(Icons.euro, color: Colors.white),
+                    Text(
+                      "12166.62",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Icon(Icons.offline_bolt_outlined, color: Colors.white),
+                    Text(
+                      "146.17",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ]),
             ],
           ),
         ),
@@ -313,7 +337,7 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
                   width: 110,
                 ),
                 Text(
-                  moduls.cloc + " | 10 dekabr 2022 | ",
+                  "${moduls.cloc} | 10 dekabr 2022 | ",
                   style: const TextStyle(color: Colors.grey),
                 ),
                 const Icon(Icons.visibility, color: Colors.blue),
@@ -321,18 +345,20 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
               ],
             ),
             Row(
-
               children: [
                 Container(
                   color: Colors.yellow,
                   height: 120,
                   width: 110,
-                  child: Image.asset(moduls.imgUrl,fit: BoxFit.cover,),
+                  child: Image.asset(
+                    moduls.imgUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
+                SizedBox(
                   width: 270,
                   height: 130,
                   child: Text(
@@ -350,107 +376,111 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
 }
 
 Widget endNews(BuildContext context) {
-  return ListView.builder(itemBuilder: (context, index) {
-    return Column( children: [
-      MyAppMain(
-        context,
-        listModul[10],
-      ),
-      MyAppMain(
-        context,
-        listModul[4],
-      ),
-      MyAppMain(
-        context,
-        listModul[7],
-      ),
-      MyAppMain(
-        context,
-        listModul[3],
-      ),
-      MyAppMain(
-        context,
-        listModul[2],
-      ),
-      MyAppMain(
-        context,
-        listModul[5],
-      ),
-      MyAppMain(
-        context,
-        listModul[0],
-      ),
-      MyAppMain(
-        context,
-        listModul[8],
-      ),
-      MyAppMain(
-        context,
-        listModul[6],
-      ),
-      MyAppMain(
-        context,
-        listModul[9],
-      ),
-      MyAppMain(
-        context,
-        listModul[1],
-      ),
-    ],);
-  },
-
+  return ListView.builder(
+    itemBuilder: (context, index) {
+      return Column(
+        children: [
+          MyAppMain(
+            context,
+            listModul[10],
+          ),
+          MyAppMain(
+            context,
+            listModul[4],
+          ),
+          MyAppMain(
+            context,
+            listModul[7],
+          ),
+          MyAppMain(
+            context,
+            listModul[3],
+          ),
+          MyAppMain(
+            context,
+            listModul[2],
+          ),
+          MyAppMain(
+            context,
+            listModul[5],
+          ),
+          MyAppMain(
+            context,
+            listModul[0],
+          ),
+          MyAppMain(
+            context,
+            listModul[8],
+          ),
+          MyAppMain(
+            context,
+            listModul[6],
+          ),
+          MyAppMain(
+            context,
+            listModul[9],
+          ),
+          MyAppMain(
+            context,
+            listModul[1],
+          ),
+        ],
+      );
+    },
   );
 }
 
 Widget theMostViewNews(BuildContext context) {
-  return ListView.builder(itemBuilder: (context, index) {
-    return Column(children: [
-      MyAppMain(
-        context,
-        listModul[0],
-      ),
-      MyAppMain(
-        context,
-        listModul[1],
-      ),
-      MyAppMain(
-        context,
-        listModul[2],
-      ),
-      MyAppMain(
-        context,
-        listModul[3],
-      ),
-      MyAppMain(
-        context,
-        listModul[4],
-      ),
-      MyAppMain(
-        context,
-        listModul[5],
-      ),
-      MyAppMain(
-        context,
-        listModul[6],
-      ),
-      MyAppMain(
-        context,
-        listModul[7],
-      ),
-      MyAppMain(
-        context,
-        listModul[8],
-      ),
-      MyAppMain(
-        context,
-        listModul[9],
-      ),
-      MyAppMain(
-        context,
-        listModul[10],
-      ),
-    ],);
-  },
-
+  return ListView.builder(
+    itemBuilder: (context, index) {
+      return Column(
+        children: [
+          MyAppMain(
+            context,
+            listModul[0],
+          ),
+          MyAppMain(
+            context,
+            listModul[1],
+          ),
+          MyAppMain(
+            context,
+            listModul[2],
+          ),
+          MyAppMain(
+            context,
+            listModul[3],
+          ),
+          MyAppMain(
+            context,
+            listModul[4],
+          ),
+          MyAppMain(
+            context,
+            listModul[5],
+          ),
+          MyAppMain(
+            context,
+            listModul[6],
+          ),
+          MyAppMain(
+            context,
+            listModul[7],
+          ),
+          MyAppMain(
+            context,
+            listModul[8],
+          ),
+          MyAppMain(
+            context,
+            listModul[9],
+          ),
+          MyAppMain(
+            context,
+            listModul[10],
+          ),
+        ],
+      );
+    },
   );
 }
