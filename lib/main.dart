@@ -1,9 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'main_menyu.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(EasyLocalization(
+    child: MyApp(),
+    supportedLocales: const [
+      Locale('uz', 'UZ'),
+      Locale('ru', 'RU'),
+    ],
+    saveLocale: true,
+    path: "assets/lang",
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -18,13 +30,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      color: Colors.white,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         tabBarTheme: const TabBarTheme(
-
             labelColor: Colors.white, unselectedLabelColor: Colors.white),
       ),
-      color: Colors.white,
       home: MainMenyu(),
     );
   }

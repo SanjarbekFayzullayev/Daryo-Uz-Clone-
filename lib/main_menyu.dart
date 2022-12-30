@@ -1,5 +1,6 @@
 import 'package:daryo_uz2/Detals_page.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'Moduls/Modul.dart';
 
@@ -16,15 +17,16 @@ class _MainMenyuState extends State<MainMenyu> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        drawer: MyDrawer(),
+        drawer: MyDrawer(context),
         appBar: AppBar(
-          title: const Text(
-            "Daryo",
-            style: TextStyle(fontWeight: FontWeight.bold),
+          title:  Text(
+            "daryo".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+              },
               icon: const Icon(Icons.search),
             ),
           ],
@@ -32,20 +34,22 @@ class _MainMenyuState extends State<MainMenyu> {
             preferredSize: const Size.fromHeight(48.05),
             child: Container(
               color: Colors.white,
-              child: const TabBar(
-                  overlayColor: MaterialStatePropertyAll(Colors.blue),
+              child:  TabBar(
+
+                  overlayColor: const MaterialStatePropertyAll(Colors.blue),
                   unselectedLabelColor: Colors.blue,
                   labelColor: Colors.blue,
-                  indicatorColor: Colors.blue,
+
+                  indicatorColor: Colors.blueAccent,
                   tabs: [
                     Tab(
-                      text: "So'nggi Yangliklar",
+                      text: "endNews".tr(),
                     ),
                     Tab(
-                      text: "Asosiy Yangliklar",
+                      text: "mainNew".tr(),
                     ),
                     Tab(
-                      text: "Eng ko'p ko'rilganlar",
+                      text: "allMoreVivews".tr(),
                     ),
                   ]),
             ),
@@ -108,7 +112,7 @@ class _MainMenyuState extends State<MainMenyu> {
   }
 }
 
-Widget MyDrawer() {
+Widget MyDrawer(BuildContext context) {
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -121,9 +125,9 @@ Widget MyDrawer() {
             children: [
               Row(
                 children: [
-                  const Text(
-                    "Daryo",
-                    style: TextStyle(
+                   Text(
+                    "daryo".tr(),
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 34,
                         color: Colors.white),
@@ -132,15 +136,17 @@ Widget MyDrawer() {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        shape: const BeveledRectangleBorder(
+                        shape:  const BeveledRectangleBorder(
                           borderRadius: BorderRadius.horizontal(
                             left: Radius.circular(8),
                           ),
                         )),
-                    onPressed: () {},
-                    child: const Text(
-                      "Lotin",
-                      style: TextStyle(color: Colors.blue),
+                    onPressed: () {
+                      context.locale=const Locale("uz","UZ");
+                    },
+                    child:  Text(
+                      "lotin".tr(),
+                      style: const TextStyle(color: Colors.blue),
                     ),
                   ),
                   OutlinedButton(
@@ -150,10 +156,12 @@ Widget MyDrawer() {
                         right: Radius.circular(8),
                       ),
                     )),
-                    onPressed: () {},
-                    child: const Text(
-                      "Kril",
-                      style: TextStyle(color: Colors.white),
+                    onPressed: () {
+                    context.locale=const Locale("ru","RU");
+                    },
+                    child:  Text(
+                      "kril".tr(),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
@@ -162,21 +170,21 @@ Widget MyDrawer() {
                 height: 20,
               ),
               Row(
-                children: const [
+                children:  [
                   Text(
-                    "Toshkent",
-                    style: TextStyle(color: Colors.white),
+                    "toshkent".tr(),
+                    style: const TextStyle(color: Colors.white),
                   ),
-                  SizedBox(width: 140),
-                  Icon(
+                  const SizedBox(width: 140),
+                  const Icon(
                     Icons.cloud_outlined,
                     color: Colors.white,
                   ),
-                  Text(
+                  const Text(
                     "+12.0",
                     style: TextStyle(color: Colors.white),
                   ),
-                  Text(
+                  const Text(
                     "0",
                     style: TextStyle(
                         fontSize: 7,
@@ -212,93 +220,93 @@ Widget MyDrawer() {
         ),
         ListTile(
           tileColor: Colors.blue,
-          title: const Text(
-            "Qo'lanma ekranini ko'rsatish",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "qolla".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "So'nggi yangiliklar",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "songgi".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Mahalliy",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "mahalliy".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Dunyo",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "dunyo".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Texnalogiyalar",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "texno".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Tanlangan habarlar",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "tanlahabar".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Madaniyat",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "madaniyat".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Avto",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "avto".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Sport",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "sport".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Foto",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "Foto".tr(),
+            style:const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Lifestiyle",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "lifestiyle".tr(),
+            style:const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Kolumnistlar",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "kolumnistlar".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
         ListTile(
-          title: const Text(
-            "Afisha",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          title:  Text(
+            "afisha".tr(),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           ),
           onTap: () {},
         ),
