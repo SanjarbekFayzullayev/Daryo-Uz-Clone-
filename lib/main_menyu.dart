@@ -191,6 +191,7 @@ Widget MyDrawer(BuildContext context) {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
+                  const Divider(thickness: 1,color: Colors.white,),
                 ],
               ),
               const SizedBox(
