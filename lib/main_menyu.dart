@@ -191,12 +191,10 @@ Widget MyDrawer(BuildContext context) {
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
                   ),
-                  const Divider(thickness: 1,color: Colors.white,),
+
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+const Divider(thickness: 1,color: Colors.white,),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
