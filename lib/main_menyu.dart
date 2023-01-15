@@ -14,6 +14,7 @@ class MainMenyu extends StatefulWidget {
 class _MainMenyuState extends State<MainMenyu> {
   @override
   Widget build(BuildContext context) {
+    var color= Colors.white;
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -113,6 +114,7 @@ class _MainMenyuState extends State<MainMenyu> {
 }
 
 Widget MyDrawer(BuildContext context) {
+
   return Drawer(
     child: ListView(
       padding: EdgeInsets.zero,
@@ -133,6 +135,7 @@ Widget MyDrawer(BuildContext context) {
                         color: Colors.white),
                   ),
                   const SizedBox(width: 12),
+
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -214,6 +217,7 @@ const Divider(thickness: 1,color: Colors.white,),
                       style: TextStyle(color: Colors.white),
                     ),
                   ]),
+
             ],
           ),
         ),
@@ -332,23 +336,26 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
         child: Column(
           children: [
             Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   moduls.widgetTuype,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.blue),
                 ),
-                const SizedBox(
-                  width: 110,
+                Row(
+                  children: [
+
+                    Text(
+                      "${moduls.cloc} | 10 dekabr 2022 | ",
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                    const Icon(Icons.visibility, color: Colors.blue),
+                    Text(moduls.viewNumbers),
+                  ],
                 ),
-                Text(
-                  "${moduls.cloc} | 10 dekabr 2022 | ",
-                  style: const TextStyle(color: Colors.grey),
-                ),
-                const Icon(Icons.visibility, color: Colors.blue),
-                Text(moduls.viewNumbers)
+
+
               ],
             ),
             Row(
@@ -366,8 +373,8 @@ Widget MyAppMain(BuildContext context, Moduls moduls) {
                   width: 10,
                 ),
                 SizedBox(
-                  width: 270,
-                  height: 130,
+                  width: MediaQuery.of(context).size.width*0.55,
+                  height: MediaQuery.of(context).size.width*0.40,
                   child: Text(
                     moduls.anonsTitle,
                     style: const TextStyle(color: Colors.black, fontSize: 16),

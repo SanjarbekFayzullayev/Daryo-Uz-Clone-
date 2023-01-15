@@ -16,26 +16,31 @@ class DetalsPage extends StatefulWidget {
 class _DetalsPageState extends State<DetalsPage> {
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData=MediaQuery.of(context);
+    var size=mediaQueryData.size;
     return Scaffold(
       body: Column(
         children: [
           Image.asset(widget.moduls.imgUrl), //Image Asset
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 widget.moduls.widgetTuype,
                 style: const TextStyle(
                     fontWeight: FontWeight.bold, color: Colors.blue),
               ),
-              const SizedBox(
-                width: 110,
-              ),
-              Text(
-                widget.moduls.cloc + " | 10 dekabr 2022 | ",
-                style: const TextStyle(color: Colors.grey),
-              ),
-              const Icon(Icons.visibility, color: Colors.blue),
-              Text(widget.moduls.viewNumbers),
+             Row(
+               children: [
+                 Text(
+                   widget.moduls.cloc + " | 10 dekabr 2022 |",
+                   style: const TextStyle(color: Colors.grey),
+                 ),
+                 const Icon(Icons.visibility, color: Colors.blue),
+                 Text(widget.moduls.viewNumbers),
+               ],
+             ),
+
               
             ],
           ),

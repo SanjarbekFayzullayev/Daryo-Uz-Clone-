@@ -8,13 +8,13 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
   runApp(EasyLocalization(
-    child: MyApp(),
     supportedLocales: const [
       Locale('uz', 'UZ'),
       Locale('ru', 'RU'),
     ],
     saveLocale: true,
     path: "assets/lang",
+    child: MyApp(),
   ));
 }
 
